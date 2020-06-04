@@ -7,7 +7,7 @@ resource "google_container_cluster" "primary" {
     location = "${var.zone}"
 
     remove_default_node_pool = true
-    initial_node_count       = 1
+    initial_node_count       = "${var.node_count_min}"
 
     master_auth {
         username = ""
@@ -23,11 +23,11 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
     name       = "${var.node_pool_name}"
     location   = "${var.zone}"
     cluster    = google_container_cluster.primary.name
-    node_count = 1
+    node_count = "${var.node_count_min}"
 
     autoscaling {
-        min_node_count = 1
-        max_node_count = 3
+        min_node_count = "${var.node_count_min}"
+        max_node_count = "${var.node_count_max}"
     }
 
     node_config {
