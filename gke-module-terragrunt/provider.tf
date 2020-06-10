@@ -6,8 +6,3 @@ provider "google" {
     zone = var.zone
 }
 
-terraform {
-    required_providers {
-        google = "~> 3.24.0"
-    }
-}
