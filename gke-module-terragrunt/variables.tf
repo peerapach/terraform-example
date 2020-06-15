@@ -1,5 +1,5 @@
 variable "project" {
-    default = "PROJECTID"
+    default = "PROJECT_NAME"
 }
 
 variable "cluster_name" {
